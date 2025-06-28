@@ -1,4 +1,5 @@
 import { navLinks } from "@/constants";
+import Image from "next/image";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -9,7 +10,14 @@ const Navbar = () => {
           href='#home'
           className='flex items-center gap-2'
         >
-          Velvet Pour
+          <Image
+            src='/images/logo.png'
+            alt='logo'
+            width={30}
+            height={30}
+            quality={100}
+          />
+          <p>Velvet Pour</p>
         </Link>
         <ul>
           {navLinks.map((link) => (
