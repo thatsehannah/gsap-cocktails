@@ -1,8 +1,30 @@
+"use client";
+
 import { cocktailLists, mockTailLists } from "@/constants";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import React from "react";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Cocktails = () => {
+  useGSAP(() => {
+    const parallaxTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#cocktails",
+        start: "top 30%",
+        end: "bottom 80%",
+        scrub: true,
+      },
+    });
+
+    parallaxTimeline
+      .from("#c-left-leaf", { x: -100, y: 100 })
+      .from("#c-right-leaf", { x: 100, y: 100 });
+  }, []);
+
   return (
     <section
       id='cocktails'
