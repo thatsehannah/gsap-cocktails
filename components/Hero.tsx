@@ -2,10 +2,12 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
+import { ScrollTrigger, SplitText } from "gsap/all";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Hero = () => {
   useGSAP(() => {
@@ -29,6 +31,18 @@ const Hero = () => {
       stagger: 0.05,
       delay: 1,
     });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      })
+      .to(".right-leaf", { y: 200 }, 0)
+      .to(".left-leaf", { y: -200 }, 0);
   }, []);
 
   return (
@@ -42,15 +56,15 @@ const Hero = () => {
           src='/images/hero-left-leaf.png'
           alt='left-leaf'
           className='left-leaf'
-          height={100}
-          width={100}
+          height={200}
+          width={200}
         />
         <Image
           src='/images/hero-right-leaf.png'
           alt='right-leaf'
           className='right-leaf'
-          height={100}
-          width={100}
+          height={200}
+          width={200}
         />
         <div className='body'>
           <div className='content'>
