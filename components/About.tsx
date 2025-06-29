@@ -1,7 +1,44 @@
+"use client";
+
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger, SplitText } from "gsap/all";
 import Image from "next/image";
 import React from "react";
 
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
 const About = () => {
+  useGSAP(() => {
+    const titleSplit = new SplitText("#about h2", { type: "words" });
+
+    const scrollTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top center",
+      },
+    });
+
+    scrollTimeline
+      .from(titleSplit.words, {
+        opacity: 0,
+        duration: 1,
+        yPercent: 100,
+        ease: "expo.out",
+        stagger: 0.02,
+      })
+      .from(
+        ".top-grid div, .bottom-grid div",
+        {
+          opacity: 0,
+          duration: 1,
+          ease: "power1.inOut",
+          stagger: 0.04,
+        },
+        "-=0.5"
+      ); //-=0.5 will make the animation start half second before the previous animation ends
+  }, []);
+
   return (
     <div id='about'>
       <div className='mb-16 md:px-0 px-5'>
