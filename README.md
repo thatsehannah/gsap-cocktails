@@ -55,6 +55,8 @@ This project deepened my understanding of scroll-driven animations and how to us
 
 ## 📸 Screenshots
 
+![Adobe Express - Screen Recording 2025-07-29 at 12 00 02 AM](https://github.com/user-attachments/assets/52be75f9-44db-4dfa-8f49-931a87b6d33a)
+
 ---
 
 Credit to [JS Mastery](https://github.com/adrianhajdin/gsap_cocktails) for this course.
